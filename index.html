@@ -278,9 +278,17 @@ showPagesButton.addEventListener('click', function() {
 // Scare Button Functionality
 let clickCount = 0;
         
+// Preload audio by playing it silently on page load
+clickSound.volume = 0;  // Mute the sound for preloading
+clickSound.play().then(() => {
+    clickSound.pause(); // Pause it immediately after starting
+    clickSound.currentTime = 0; // Rewind to the beginning
+    clickSound.volume = 1;  // Restore the volume
+});
+
+// Play click sound immediately when the button is clicked
 scareButton.addEventListener('click', () => {
-    // Play sound immediately when the button is clicked
-    playClickSound(); 
+    playClickSound();  // Play sound immediately upon clicking
 
     if (clickCount === 0) {
         alert('Thanks For Your IP Address');
