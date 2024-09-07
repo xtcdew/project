@@ -258,6 +258,10 @@ function playClickSound() {
 }
 
 // Show/Hide Embedded Pages
+const showPagesButton = document.getElementById('showPagesButton');
+const embeddedPages = document.getElementById('embeddedPages');
+const scareButton = document.getElementById('scareButton');
+
 showPagesButton.addEventListener('click', function() {
     playClickSound(); // Play sound on button click
     if (embeddedPages.style.display === "none" || embeddedPages.style.display === "") {
@@ -272,6 +276,8 @@ showPagesButton.addEventListener('click', function() {
 });
 
 // Scare Button Functionality
+let clickCount = 0;
+        
 scareButton.addEventListener('click', () => {
     playClickSound(); // Play sound on button click
     if (clickCount === 0) {
