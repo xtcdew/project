@@ -42,22 +42,28 @@
             100% { text-shadow: -2px 2px- #ff00ff, 2px 2px #00ffff; }
         }
         button {
-            font-family: 'Poppins', sans-serif;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #ffe4ff;
-            color: #262626;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-        button:hover {
-            background-color: #ff8aec;
-            box-shadow: 4px 4px 0px rgba(255, 255, 255, 1); /* Increase glow on hover */
-        }
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px; /* General margin for all buttons */
+    border: none;
+    border-radius: 5px;
+    background-color: #ffe4ff;
+    color: #262626;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.scare-button {
+    margin-bottom: 225px; /* 300px margin only on the bottom */
+}
+
+button:hover {
+    background-color: #ff8aec;
+    box-shadow: 4px 4px 0px rgba(255, 255, 255, 1); /* Increase glow on hover */
+}
+
         .shrink {
             transform: scale(0.8);
             transition: transform 0.2s;
@@ -140,7 +146,7 @@
             border-radius: 10px;
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Bright white glow */
             transition: background-color 0.3s;
-            margin-top: 300px; /* Space between main content and footer */
+             /* Space between main content and footer */
         }
         footer:hover, footer:active {
             background-color: #1c313a; /* Change color on hover or click */
@@ -228,7 +234,8 @@
 
     <h1>XTCDEW brought you here 🗿</h1>
     <button id="showPagesButton">Show Embedded Pages</button>
-    <button id="scareButton">Click Me... If You Dare!</button>
+<button id="scareButton" class="scare-button">Click Me... If You Dare!</button>
+
 
     <div class="embedded-pages" id="embeddedPages">
         <iframe src="https://www.pixelthoughts.co" title="Embedded Page 1"></iframe>
@@ -238,73 +245,76 @@
 
     <script>
         // Show/Hide Embedded Pages
-        const showPagesButton = document.getElementById('showPagesButton');
-        const embeddedPages = document.getElementById('embeddedPages');
+const showPagesButton = document.getElementById('showPagesButton');
+const embeddedPages = document.getElementById('embeddedPages');
+const scareButton = document.getElementById('scareButton');
 
-        showPagesButton.addEventListener('click', function() {
-            if (embeddedPages.style.display === "none" || embeddedPages.style.display === "") {
-                embeddedPages.style.display = "block";
-                showPagesButton.textContent = "Hide Embedded Pages"; // Update button text
-            } else {
-                embeddedPages.style.display = "none";
-                showPagesButton.textContent = "Show Embedded Pages"; // Update button text
-            }
-        });
+showPagesButton.addEventListener('click', function() {
+    if (embeddedPages.style.display === "none" || embeddedPages.style.display === "") {
+        embeddedPages.style.display = "block";
+        showPagesButton.textContent = "Hide Embedded Pages"; // Update button text
+        scareButton.style.marginBottom = "0"; // Remove margin when embedded pages are shown
+    } else {
+        embeddedPages.style.display = "none";
+        showPagesButton.textContent = "Show Embedded Pages"; // Update button text
+        scareButton.style.marginBottom = "225px"; // Add margin when embedded pages are hidden
+    }
+});
 
-        // Scare Button Functionality
-        const scareButton = document.getElementById('scareButton');
-        let clickCount = 0;
+// Scare Button Functionality
+let clickCount = 0;
 
-        scareButton.addEventListener('click', () => {
-            if (clickCount === 0) {
-                alert('Thanks For Your IP Address');
-                scareButton.textContent = "I warned you...";
-                scareButton.classList.add('shrink');
-                clickCount++;
-            } else if (clickCount === 1) {
-                alert('You dared again!');
-                scareButton.textContent = "Still here?";
-                scareButton.classList.add('shrink');
-                setTimeout(() => scareButton.classList.remove('shrink'), 200);
-                clickCount++;
-            } else if (clickCount === 2) {
-                alert('You really are brave!');
-                scareButton.textContent = "Keep going...";
-                scareButton.classList.add('shrink');
-                setTimeout(() => scareButton.classList.remove('shrink'), 200);
-                clickCount++;
-            } else {
-                alert('Okay, you win!');
-                scareButton.textContent = "That’s all, folks!";
-                scareButton.disabled = true;
-                scareButton.style.backgroundColor = '#c2c2c2';
-                scareButton.style.cursor = 'default';
-            }
-        });
+scareButton.addEventListener('click', () => {
+    if (clickCount === 0) {
+        alert('Thanks For Your IP Address');
+        scareButton.textContent = "I warned you...";
+        scareButton.classList.add('shrink');
+        clickCount++;
+    } else if (clickCount === 1) {
+        alert('You dared again!');
+        scareButton.textContent = "Still here?";
+        scareButton.classList.add('shrink');
+        setTimeout(() => scareButton.classList.remove('shrink'), 200);
+        clickCount++;
+    } else if (clickCount === 2) {
+        alert('You really are brave!');
+        scareButton.textContent = "Keep going...";
+        scareButton.classList.add('shrink');
+        setTimeout(() => scareButton.classList.remove('shrink'), 200);
+        clickCount++;
+    } else {
+        alert('Okay, you win!');
+        scareButton.textContent = "That’s all, folks!";
+        scareButton.disabled = true;
+        scareButton.style.backgroundColor = '#c2c2c2';
+        scareButton.style.cursor = 'default';
+    }
+});
 
-        // Loading Screen Functionality
-        const loadingScreen = document.getElementById('loadingScreen');
-        const loadingText = document.getElementById('loadingText');
-        const loadingMessages = [
-            "Loading magic...",
-            "Just a moment...",
-            "Preparing...",
-            "Loading...",
-            "Almost there..."
-        ];
-        let messageIndex = 0;
+// Loading Screen Functionality
+const loadingScreen = document.getElementById('loadingScreen');
+const loadingText = document.getElementById('loadingText');
+const loadingMessages = [
+    "Loading magic...",
+    "Just a moment...",
+    "Preparing...",
+    "Loading...",
+    "Almost there..."
+];
+let messageIndex = 0;
 
-        function updateLoadingText() {
-            loadingText.textContent = loadingMessages[messageIndex];
-            messageIndex = (messageIndex + 1) % loadingMessages.length;
-        }
+function updateLoadingText() {
+    loadingText.textContent = loadingMessages[messageIndex];
+    messageIndex = (messageIndex + 1) % loadingMessages.length;
+}
 
-        const loadingInterval = setInterval(updateLoadingText, 2000); // Change text every 2 seconds
+const loadingInterval = setInterval(updateLoadingText, 2000); // Change text every 2 seconds
 
-        window.addEventListener('load', () => {
-            clearInterval(loadingInterval); // Stop changing text
-            loadingScreen.style.display = 'none'; // Hide the loading screen
-        });
+window.addEventListener('load', () => {
+    clearInterval(loadingInterval); // Stop changing text
+    loadingScreen.style.display = 'none'; // Hide the loading screen
+});
+
     </script>
 
     <!-- Hidden image using display none -->
