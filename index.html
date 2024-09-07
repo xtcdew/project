@@ -279,28 +279,32 @@ showPagesButton.addEventListener('click', function() {
 let clickCount = 0;
         
 scareButton.addEventListener('click', () => {
-    // Play sound with a small delay to ensure it happens immediately
-    setTimeout(playClickSound, 0); // Immediate delay
-
+    // Play sound immediately when the button is clicked
+    playClickSound(); 
+    
     if (clickCount === 0) {
         alert('Thanks For Your IP Address');
+        playClickSound(); // Play sound after alert "OK" is clicked
         scareButton.textContent = "I warned you...";
         scareButton.classList.add('shrink');
         clickCount++;
     } else if (clickCount === 1) {
         alert('You dared again!');
+        playClickSound(); // Play sound after alert "OK" is clicked
         scareButton.textContent = "Still here?";
         scareButton.classList.add('shrink');
         setTimeout(() => scareButton.classList.remove('shrink'), 200);
         clickCount++;
     } else if (clickCount === 2) {
         alert('You really are brave!');
+        playClickSound(); // Play sound after alert "OK" is clicked
         scareButton.textContent = "Keep going...";
         scareButton.classList.add('shrink');
         setTimeout(() => scareButton.classList.remove('shrink'), 200);
         clickCount++;
     } else {
         alert('Okay, you win!');
+        playClickSound(); // Play sound after alert "OK" is clicked
         scareButton.textContent = "That’s all, folks!";
         scareButton.disabled = true;
         scareButton.style.backgroundColor = '#c2c2c2';
