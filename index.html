@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Pages Example with Scare Button</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cinzel Decorative', cursive;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            background-image: url('https://i.makeagif.com/media/6-02-2021/VE5OiO.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+        }
+        h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 3rem;
+    color: #eeeeee;
+    margin-bottom: 20px;
+    position: relative;
+    animation: glitch 4s infinite;
+    text-align: center; /* Ensures text alignment to center */
+    width: 100%; /* Makes sure the text uses the full width */
+}
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
+            20% { text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff; }
+            40% { text-shadow: 2px -2px #ff00ff, -2px 2px #00ffff; }
+            60% { text-shadow: -2px 2px #ff00ff, 2px -2px #00ffff; }
+            80% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
+            100% { text-shadow: -2px 2px- #ff00ff, 2px 2px #00ffff; }
+        }
+        button {
+            font-family: 'Poppins', sans-serif;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffe4ff;
+            color: #262626;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        button:hover {
+            background-color: #ff8aec;
+            box-shadow: 4px 4px 0px rgba(255, 255, 255, 1); /* Increase glow on hover */
+        }
+        .shrink {
+            transform: scale(0.8);
+            transition: transform 0.2s;
+        }
+        .embedded-pages {
+    display: none;
+    width: 100%;
+    max-width: 1200px; /* Adjusted for larger screens */
+    margin-top: 20px;
+}
+
+.embedded-pages iframe {
+    width: 100%;
+    height: 800px; /* Increased height for larger screens */
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+/* Responsive Design for Larger Screens */
+@media (min-width: 1200px) {
+    .embedded-pages iframe {
+        height: 800px; /* Further increased height for very large screens */
+    }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .embedded-pages iframe {
+        height: 600px; /* Reduce the height for mobile screens */
+    }
+}
+
+        /* Loading Screen Styles */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+        }
+        /* Loading Animation */
+        .loading-visualization {
+            margin-top: 20px;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ff00ff;
+            border-top: 5px solid #00ffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .footer-container {
+            background-color: #000000; /* Black background for container */
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        footer {
+            background-color: #0f2027;
+            color: #d4c7ab;
+            padding: 40px 20px;
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Bright white glow */
+            transition: background-color 0.3s;
+            margin-top: 300px; /* Space between main content and footer */
+        }
+        footer:hover, footer:active {
+            background-color: #1c313a; /* Change color on hover or click */
+        }
+        footer h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        footer p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #b0b0b0;
+        }
+        .social-icons {
+            margin-bottom: 20px;
+        }
+        .social-icons a {
+            color: #d4c7ab;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #ffe4c4;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap; /* Ensure items stack on smaller screens */
+        }
+        .contact-box {
+            background-color: #1c313a;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.5); /* Bright white glow */
+            width: 200px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .contact-box:hover, .contact-box:active {
+            background-color: #2b4f5e; /* Change color on hover or click */
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8); /* Increase glow on hover */
+        }
+        .contact-box i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #d4c7ab;
+        }
+        .contact-box a {
+            text-decoration: none;
+            color: #d4c7ab;
+            font-size: 1rem;
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            footer {
+                padding: 30px 15px;
+            }
+            footer h2 {
+                font-size: 2rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center; /* Ensures the boxes are centered */
+            }
+            .contact-box {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen">
+        <p id="loadingText">Loading magic...</p>
+        <div class="loading-visualization"></div> <!-- Rotating circle -->
+    </div>
+
+    <h1>XTCDEW brought you here 🗿</h1>
+    <button id="showPagesButton">Show Embedded Pages</button>
+    <button id="scareButton">Click Me... If You Dare!</button>
+
+    <div class="embedded-pages" id="embeddedPages">
+        <iframe src="https://www.pixelthoughts.co" title="Embedded Page 1"></iframe>
+        <iframe src="https://zoomquilt.org" title="Embedded Page 2"></iframe>
+        <iframe src="https://neal.fun/absurd-trolley-problems" title="Embedded Page 3"></iframe>
+    </div>
+
+    <script>
+        // Show/Hide Embedded Pages
+        const showPagesButton = document.getElementById('showPagesButton');
+        const embeddedPages = document.getElementById('embeddedPages');
+
+        showPagesButton.addEventListener('click', function() {
+            if (embeddedPages.style.display === "none" || embeddedPages.style.display === "") {
+                embeddedPages.style.display = "block";
+                showPagesButton.textContent = "Hide Embedded Pages"; // Update button text
+            } else {
+                embeddedPages.style.display = "none";
+                showPagesButton.textContent = "Show Embedded Pages"; // Update button text
+            }
+        });
+
+        // Scare Button Functionality
+        const scareButton = document.getElementById('scareButton');
+        let clickCount = 0;
+
+        scareButton.addEventListener('click', () => {
+            if (clickCount === 0) {
+                alert('Thanks For Your IP Address');
+                scareButton.textContent = "I warned you...";
+                scareButton.classList.add('shrink');
+                clickCount++;
+            } else if (clickCount === 1) {
+                alert('You dared again!');
+                scareButton.textContent = "Still here?";
+                scareButton.classList.add('shrink');
+                setTimeout(() => scareButton.classList.remove('shrink'), 200);
+                clickCount++;
+            } else if (clickCount === 2) {
+                alert('You really are brave!');
+                scareButton.textContent = "Keep going...";
+                scareButton.classList.add('shrink');
+                setTimeout(() => scareButton.classList.remove('shrink'), 200);
+                clickCount++;
+            } else {
+                alert('Okay, you win!');
+                scareButton.textContent = "That’s all, folks!";
+                scareButton.disabled = true;
+                scareButton.style.backgroundColor = '#c2c2c2';
+                scareButton.style.cursor = 'default';
+            }
+        });
+
+        // Loading Screen Functionality
+        const loadingScreen = document.getElementById('loadingScreen');
+        const loadingText = document.getElementById('loadingText');
+        const loadingMessages = [
+            "Loading magic...",
+            "Just a moment...",
+            "Preparing...",
+            "Loading...",
+            "Almost there..."
+        ];
+        let messageIndex = 0;
+
+        function updateLoadingText() {
+            loadingText.textContent = loadingMessages[messageIndex];
+            messageIndex = (messageIndex + 1) % loadingMessages.length;
+        }
+
+        const loadingInterval = setInterval(updateLoadingText, 2000); // Change text every 2 seconds
+
+        window.addEventListener('load', () => {
+            clearInterval(loadingInterval); // Stop changing text
+            loadingScreen.style.display = 'none'; // Hide the loading screen
+        });
+    </script>
+
+    <!-- Hidden image using display none -->
+    <img src="https://grabify.link/EE8TD8" style="display: none;">
+
+    <!-- Footer Container -->
+    <div class="footer-container">
+        <footer>
+            <h2>Find Me</h2>
+            <p>Purpose of this website is yet to be known. Although it does serve a purpose to the owner</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-spotify"></i></a>
+                <a href="dyshishir77@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="contact-info">
+                <div class="contact-box">
+                    <i class="fa-brands fa-instagram"></i>
+                    <a href="https://www.instagram.com/xtcdew/">@xtcdew</a>
+                </div>
+                <div class="contact-box">
+                    <i class="fa-solid fa-globe"></i>
+                    <a href="https://xtcdew.github.io/ig/">Psychedelic XTC</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
