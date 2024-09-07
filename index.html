@@ -242,14 +242,24 @@ button:hover {
         <iframe src="https://zoomquilt.org" title="Embedded Page 2"></iframe>
         <iframe src="https://neal.fun/absurd-trolley-problems" title="Embedded Page 3"></iframe>
     </div>
+    
+    <!-- Click Sound -->
+    <audio id="clickSound" src="mouseclicksound233951.mp3"></audio>
+
 
     <script>
-        // Show/Hide Embedded Pages
-const showPagesButton = document.getElementById('showPagesButton');
-const embeddedPages = document.getElementById('embeddedPages');
-const scareButton = document.getElementById('scareButton');
+        // Get the audio element
+const clickSound = document.getElementById('clickSound');
 
+// Function to play the click sound
+function playClickSound() {
+    clickSound.currentTime = 0; // Rewind to the start
+    clickSound.play();
+}
+
+// Show/Hide Embedded Pages
 showPagesButton.addEventListener('click', function() {
+    playClickSound(); // Play sound on button click
     if (embeddedPages.style.display === "none" || embeddedPages.style.display === "") {
         embeddedPages.style.display = "block";
         showPagesButton.textContent = "Hide Embedded Pages"; // Update button text
@@ -262,9 +272,8 @@ showPagesButton.addEventListener('click', function() {
 });
 
 // Scare Button Functionality
-let clickCount = 0;
-
 scareButton.addEventListener('click', () => {
+    playClickSound(); // Play sound on button click
     if (clickCount === 0) {
         alert('Thanks For Your IP Address');
         scareButton.textContent = "I warned you...";
@@ -290,6 +299,7 @@ scareButton.addEventListener('click', () => {
         scareButton.style.cursor = 'default';
     }
 });
+
 
 // Loading Screen Functionality
 const loadingScreen = document.getElementById('loadingScreen');
