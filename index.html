@@ -232,7 +232,7 @@ button:hover {
         <div class="loading-visualization"></div> <!-- Rotating circle -->
     </div>
 
-    <h1>XTCDEW brought you here 🗿</h1>
+    <h1>XTCDEW brought you here  🗿</h1>
     <button id="showPagesButton">Show Embedded Pages</button>
 <button id="scareButton" class="scare-button">Click Me... If You Dare!</button>
 
@@ -242,14 +242,28 @@ button:hover {
         <iframe src="https://zoomquilt.org" title="Embedded Page 2"></iframe>
         <iframe src="https://neal.fun/absurd-trolley-problems" title="Embedded Page 3"></iframe>
     </div>
+    
+    <!-- Click Sound -->
+    <audio id="clickSound" src="mouseclicksound233951.mp3"></audio>
+
 
     <script>
-        // Show/Hide Embedded Pages
+        // Get the audio element
+const clickSound = document.getElementById('clickSound');
+
+// Function to play the click sound
+function playClickSound() {
+    clickSound.currentTime = 0; // Rewind to the start
+    clickSound.play();
+}
+
+// Show/Hide Embedded Pages
 const showPagesButton = document.getElementById('showPagesButton');
 const embeddedPages = document.getElementById('embeddedPages');
 const scareButton = document.getElementById('scareButton');
 
 showPagesButton.addEventListener('click', function() {
+    playClickSound(); // Play sound on button click
     if (embeddedPages.style.display === "none" || embeddedPages.style.display === "") {
         embeddedPages.style.display = "block";
         showPagesButton.textContent = "Hide Embedded Pages"; // Update button text
@@ -263,33 +277,40 @@ showPagesButton.addEventListener('click', function() {
 
 // Scare Button Functionality
 let clickCount = 0;
-
+        
 scareButton.addEventListener('click', () => {
+    // Play sound with a small delay to ensure it happens immediately
+    setTimeout(playClickSound, 0); // Immediate delay
+
     if (clickCount === 0) {
-        alert('Thanks For Your IP Address');
+        alert('An IP address conflict was detected');
         scareButton.textContent = "I warned you...";
         scareButton.classList.add('shrink');
         clickCount++;
     } else if (clickCount === 1) {
-        alert('You dared again!');
+        alert("!!SYSTEM ERROR: UNAUTHORIZED ACCESS DENIED!!\n\n" +
+        "ERROR CODE: 0x004F5HACK_005\n" );
         scareButton.textContent = "Still here?";
         scareButton.classList.add('shrink');
         setTimeout(() => scareButton.classList.remove('shrink'), 200);
         clickCount++;
     } else if (clickCount === 2) {
-        alert('You really are brave!');
-        scareButton.textContent = "Keep going...";
+        alert('Shishir says Hi');
+        scareButton.textContent = "Don't...";
         scareButton.classList.add('shrink');
         setTimeout(() => scareButton.classList.remove('shrink'), 200);
         clickCount++;
     } else {
-        alert('Okay, you win!');
-        scareButton.textContent = "That’s all, folks!";
+        alert('Okay, you lost!');
+        scareButton.textContent = "That’s all, B*tch!";
         scareButton.disabled = true;
         scareButton.style.backgroundColor = '#c2c2c2';
         scareButton.style.cursor = 'default';
     }
 });
+
+
+
 
 // Loading Screen Functionality
 const loadingScreen = document.getElementById('loadingScreen');
