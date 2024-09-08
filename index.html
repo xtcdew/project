@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-         body {
+    body {
         font-family: 'Cinzel Decorative', cursive;
         display: flex;
         flex-direction: column;
@@ -20,8 +20,8 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        background-attachment: fixed;
-        height: 100vh;
+        background-attachment: scroll; /* Change to scroll if needed */
+        min-height: 100vh; /* Ensures body at least the height of the viewport */
         overscroll-behavior: none; /* Prevents overscroll effect */
         touch-action: pan-y; /* Restricts touch actions to vertical scrolling */
     }
@@ -29,207 +29,226 @@
     html, body {
         overflow-x: hidden; /* Prevents horizontal scrolling */
     }
-        h1 {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 3rem;
-    color: #eeeeee;
-    margin-bottom: 20px;
-    position: relative;
-    animation: glitch 4s infinite;
-    text-align: center; /* Ensures text alignment to center */
-    width: 100%; /* Makes sure the text uses the full width */
-}
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
-            20% { text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff; }
-            40% { text-shadow: 2px -2px #ff00ff, -2px 2px #00ffff; }
-            60% { text-shadow: -2px 2px #ff00ff, 2px -2px #00ffff; }
-            80% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
-            100% { text-shadow: -2px 2px- #ff00ff, 2px 2px #00ffff; }
-        }
-        button {
-    font-family: 'Poppins', sans-serif;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 10px; /* General margin for all buttons */
-    border: none;
-    border-radius: 5px;
-    background-color: #ffe4ff;
-    color: #262626;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.8);
-}
 
-.scare-button {
-    margin-bottom: 225px; /* 300px margin only on the bottom */
-}
-
-button:hover {
-    background-color: #ff8aec;
-    box-shadow: 4px 4px 0px rgba(255, 255, 255, 1); /* Increase glow on hover */
-}
-
-        .shrink {
-            transform: scale(0.8);
-            transition: transform 0.2s;
-        }
-        .embedded-pages {
-    display: none;
-    width: 100%;
-    max-width: 1200px; /* Adjusted for larger screens */
-    margin-top: 20px;
-}
-
-.embedded-pages iframe {
-    width: 100%;
-    height: 800px; /* Increased height for larger screens */
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-}
-
-/* Responsive Design for Larger Screens */
-@media (min-width: 1200px) {
-    .embedded-pages iframe {
-        height: 600px; /* Further increased height for very large screens */
+    h1 {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 3rem;
+        color: #eeeeee;
+        margin-bottom: 20px;
+        position: relative;
+        animation: glitch 4s infinite;
+        text-align: center; /* Ensures text alignment to center */
+        width: 100%; /* Makes sure the text uses the full width */
     }
-}
 
-/* Responsive Design for Mobile */
-@media (max-width: 768px) {
-    .embedded-pages iframe {
-        height: 600px; /* Reduce the height for mobile screens */
+    @keyframes glitch {
+        0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
+        20% { text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff; }
+        40% { text-shadow: 2px -2px #ff00ff, -2px 2px #00ffff; }
+        60% { text-shadow: -2px 2px #ff00ff, 2px -2px #00ffff; }
+        80% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
+        100% { text-shadow: -2px 2px- #ff00ff, 2px 2px #00ffff; }
     }
-}
 
-        /* Loading Screen Styles */
-        #loadingScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 9999;
-            font-family: 'Poppins', sans-serif;
-            font-size: 24px;
+    button {
+        font-family: 'Poppins', sans-serif;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px; /* General margin for all buttons */
+        border: none;
+        border-radius: 5px;
+        background-color: #ffe4ff;
+        color: #262626;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    .scare-button {
+        margin-bottom: 225px; /* 300px margin only on the bottom */
+    }
+
+    button:hover {
+        background-color: #ff8aec;
+        box-shadow: 4px 4px 0px rgba(255, 255, 255, 1); /* Increase glow on hover */
+    }
+
+    .shrink {
+        transform: scale(0.8);
+        transition: transform 0.2s;
+    }
+
+    .embedded-pages {
+        display: none;
+        width: 100%;
+        max-width: 1200px; /* Adjusted for larger screens */
+        margin-top: 20px;
+    }
+
+    .embedded-pages iframe {
+        width: 100%;
+        height: 800px; /* Increased height for larger screens */
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+    }
+
+    /* Responsive Design for Larger Screens */
+    @media (min-width: 1200px) {
+        .embedded-pages iframe {
+            height: 600px; /* Further increased height for very large screens */
         }
-        /* Loading Animation */
-        .loading-visualization {
-            margin-top: 20px;
-            width: 50px;
-            height: 50px;
-            border: 5px solid #ff00ff;
-            border-top: 5px solid #00ffff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+    }
+
+    /* Responsive Design for Mobile */
+    @media (max-width: 768px) {
+        .embedded-pages iframe {
+            height: 600px; /* Reduce the height for mobile screens */
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .footer-container {
-            background-color: #000000; /* Black background for container */
-            padding: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    }
+
+    /* Loading Screen Styles */
+    #loadingScreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 9999;
+        font-family: 'Poppins', sans-serif;
+        font-size: 24px;
+    }
+
+    /* Loading Animation */
+    .loading-visualization {
+        margin-top: 20px;
+        width: 50px;
+        height: 50px;
+        border: 5px solid #ff00ff;
+        border-top: 5px solid #00ffff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .footer-container {
+        background-color: #000000; /* Black background for container */
+        padding: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    footer {
+        background-color: #0f2027;
+        color: #d4c7ab;
+        padding: 40px 20px;
+        width: 90%;
+        max-width: 1200px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Bright white glow */
+        transition: background-color 0.3s;
+    }
+
+    footer:hover, footer:active {
+        background-color: #1c313a; /* Change color on hover or click */
+    }
+
+    footer h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    footer p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        color: #b0b0b0;
+    }
+
+    .social-icons {
+        margin-bottom: 20px;
+    }
+
+    .social-icons a {
+        color: #d4c7ab;
+        margin: 0 10px;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+        color: #ffe4c4;
+    }
+
+    .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap; /* Ensure items stack on smaller screens */
+    }
+
+    .contact-box {
+        background-color: #1c313a;
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.5); /* Bright white glow */
+        width: 200px;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-box:hover, .contact-box:active {
+        background-color: #2b4f5e; /* Change color on hover or click */
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8); /* Increase glow on hover */
+    }
+
+    .contact-box i {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: #d4c7ab;
+    }
+
+    .contact-box a {
+        text-decoration: none;
+        color: #d4c7ab;
+        font-size: 1rem;
+    }
+
+    /* Responsive Design for Mobile */
+    @media (max-width: 768px) {
         footer {
-            background-color: #0f2027;
-            color: #d4c7ab;
-            padding: 40px 20px;
-            width: 90%;
-            max-width: 1200px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Bright white glow */
-            transition: background-color 0.3s;
-             /* Space between main content and footer */
-        }
-        footer:hover, footer:active {
-            background-color: #1c313a; /* Change color on hover or click */
+            padding: 30px 15px;
         }
         footer h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        footer p {
-            font-size: 1rem;
-            margin-bottom: 20px;
-            color: #b0b0b0;
-        }
-        .social-icons {
-            margin-bottom: 20px;
-        }
-        .social-icons a {
-            color: #d4c7ab;
-            margin: 0 10px;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-        .social-icons a:hover {
-            color: #ffe4c4;
+            font-size: 2rem;
         }
         .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap; /* Ensure items stack on smaller screens */
+            flex-direction: column;
+            align-items: center; /* Ensures the boxes are centered */
         }
         .contact-box {
-            background-color: #1c313a;
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.5); /* Bright white glow */
-            width: 200px;
-            transition: background-color 0.3s, box-shadow 0.3s;
+            width: 100%;
+            max-width: 250px;
+            margin-bottom: 20px;
         }
-        .contact-box:hover, .contact-box:active {
-            background-color: #2b4f5e; /* Change color on hover or click */
-            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8); /* Increase glow on hover */
-        }
-        .contact-box i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #d4c7ab;
-        }
-        .contact-box a {
-            text-decoration: none;
-            color: #d4c7ab;
-            font-size: 1rem;
-        }
+    }
+</style>
 
-        /* Responsive Design for Mobile */
-        @media (max-width: 768px) {
-            footer {
-                padding: 30px 15px;
-            }
-            footer h2 {
-                font-size: 2rem;
-            }
-            .contact-info {
-                flex-direction: column;
-                align-items: center; /* Ensures the boxes are centered */
-            }
-            .contact-box {
-                width: 100%;
-                max-width: 250px;
-                margin-bottom: 20px;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Loading Screen -->
