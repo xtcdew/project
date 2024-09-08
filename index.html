@@ -9,20 +9,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Cinzel Decorative', cursive;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 20px;
-            background-image: url('https://i.makeagif.com/media/6-02-2021/VE5OiO.gif');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            height: 100vh;
-        }
+         body {
+        font-family: 'Cinzel Decorative', cursive;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 20px;
+        background-image: url('https://i.makeagif.com/media/6-02-2021/VE5OiO.gif');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100vh;
+        overscroll-behavior: none; /* Prevents overscroll effect */
+        touch-action: pan-y; /* Restricts touch actions to vertical scrolling */
+    }
+
+    html, body {
+        overflow-x: hidden; /* Prevents horizontal scrolling */
+    }
         h1 {
     font-family: 'Cinzel Decorative', cursive;
     font-size: 3rem;
@@ -240,7 +246,7 @@ button:hover {
     <div class="embedded-pages" id="embeddedPages">
         <iframe src="https://www.pixelthoughts.co" title="Embedded Page 1"></iframe>
         <iframe src="https://zoomquilt.org" title="Embedded Page 2"></iframe>
-        <iframe src="https://neal.fun/printing-money" title="Embedded Page 3"></iframe>
+        <iframe src="https://neal.fun/absurd-trolley-problems" title="Embedded Page 3"></iframe>
     </div>
     
     <!-- Click Sound -->
